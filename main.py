@@ -6,9 +6,12 @@ from PyQt6.QtWidgets import QApplication
 from faster_whisper import WhisperModel
 from jarvis.core.bus import bus
 from jarvis.brain.llm import llm
+from jarvis.brain.agent import agent
+from jarvis.brain.reflex import reflex
 from jarvis.senses.tts import tts
 from jarvis.core.config import CONFIG
 from jarvis.ui.overlay import JarvisOverlay
+import jarvis.tools.windows_tools # Init registry
 
 class JarvisCore:
     def __init__(self):
@@ -22,17 +25,25 @@ class JarvisCore:
         )
 
     async def handle_input(self, text: str):
-        # ... previous implementation ...
+        # 1. Reflex Layer
+        reflex_action = reflex.check(text)
+        if reflex_action:
+            # Skip LLM, execute tool directly
+            await bus.publish("state_change", "speaking")
+            # Simplified tool execution for reflex
+            # res = await agent._execute_tool(...)
+            await tts.speak(f"Executing {reflex_action}, sir.")
+            return
+
+        # 2. Agent Loop
         await bus.publish("state_change", "thinking")
         await bus.publish("transcript", text)
 
-        full_response = ""
-        async for chunk in llm.generate(text):
-            full_response += chunk
+        response = await agent.run(text)
 
-        await bus.publish("response", full_response)
+        await bus.publish("response", response)
         await bus.publish("state_change", "speaking")
-        await tts.speak(full_response)
+        await tts.speak(response)
         await bus.publish("state_change", "idle")
 
     def toggle_listen(self):
@@ -44,7 +55,6 @@ async def main():
     core = JarvisCore()
     await tts.preload_clips()
 
-    # Socket listener for launcher
     async def socket_listener():
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server.bind(('127.0.0.1', 65432))
@@ -62,11 +72,9 @@ async def main():
                 await asyncio.sleep(0.1)
 
     keyboard.add_hotkey('f9', core.toggle_listen)
-
     asyncio.create_task(socket_listener())
 
     print("JARVIS Online.")
-    # Integrate PyQt event loop with asyncio
     while True:
         app.processEvents()
         await asyncio.sleep(0.01)
