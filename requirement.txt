@@ -1,0 +1,6 @@
+# Required Dependencies
+# To be populated during phase implementation
+onnxruntime
+asyncio
+pyyaml
+python-dotenv

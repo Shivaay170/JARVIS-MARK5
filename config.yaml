@@ -1,0 +1,11 @@
+# Project Configuration
+settings:
+  voice:
+    engine: "onnx"
+    language: "en-US"
+  llm:
+    provider: "claude"
+    model: "claude-3-5-sonnet"
+  system:
+    cpu_limit: 0.05
+    ram_limit_mb: 1024
