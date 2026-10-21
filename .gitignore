@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+models/
+data/*.db
+data/*.db-shm
+data/*.db-wal
+data/voiceprint.npy
+data/voiceprint.log
+data/temp_chunk.wav
+temp_chunk.wav

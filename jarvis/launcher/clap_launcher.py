@@ -28,15 +28,17 @@ class ClapLauncher:
                 self.spikes = []
 
     def activate(self):
-        try:
-            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-                s.settimeout(0.1)
-                s.connect(('127.0.0.1', 65432))
-                s.sendall(b"activate")
-        except ConnectionRefusedError:
-            subprocess.Popen(["python", "main.py"])
-            time.sleep(1)
-            self.activate()
+        for attempt in range(20):
+            try:
+                with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                    s.settimeout(0.5)
+                    s.connect(('127.0.0.1', 65432))
+                    s.sendall(b"activate")
+                    return
+            except (ConnectionRefusedError, socket.timeout):
+                if attempt == 0:
+                    subprocess.Popen(["python", "main.py"])
+                time.sleep(0.5)
 
     def run(self):
         with sd.InputStream(callback=self.detect_clap, channels=1, samplerate=16000):

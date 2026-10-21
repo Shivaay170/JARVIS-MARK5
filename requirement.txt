@@ -1,6 +1,14 @@
 # Required Dependencies
-# To be populated during phase implementation
-onnxruntime
-asyncio
+PyQt6
+faster-whisper
+edge-tts
+sounddevice
+soundfile
+keyboard
+openai
 pyyaml
 python-dotenv
+psutil
+rapidfuzz
+numpy
+sherpa-onnx

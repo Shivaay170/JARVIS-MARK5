@@ -1,0 +1,17 @@
+2026-10-21 17:09:36,256 - model=openai/gpt-oss-120b prompt=0 completion=120
+2026-10-21 17:12:22,788 - model=openai/gpt-oss-120b prompt=0 completion=120
+2026-10-21 17:16:03,072 - model=openai/gpt-oss-120b prompt=0 completion=25
+2026-10-21 17:36:57,658 - model=openai/gpt-oss-120b prompt=0 completion=90
+2026-10-21 17:37:40,929 - model=openai/gpt-oss-120b prompt=0 completion=313
+2026-10-21 17:38:10,138 - model=openai/gpt-oss-120b prompt=0 completion=110
+2026-10-21 17:39:20,109 - model=openai/gpt-oss-120b prompt=0 completion=38
+model=openai/gpt-oss-20b prompt=125 completion=68 reasoning=34 total=193
+model=openai/gpt-oss-20b prompt=125 completion=68 reasoning=34 total=193
+model=openai/gpt-oss-20b prompt=123 completion=47 reasoning=21 total=170
+model=openai/gpt-oss-20b prompt=123 completion=47 reasoning=21 total=170
+2026-10-21 20:17:43 - model=openai/gpt-oss-20b prompt=125 completion=61 reasoning=29 total=186
+2026-10-21 21:57:08 - model=openai/gpt-oss-20b prompt=477 completion=38 reasoning=18 total=515
+2026-10-21 21:57:51 - model=openai/gpt-oss-20b prompt=476 completion=32 reasoning=9 total=508
+2026-10-21 21:57:52 - model=openai/gpt-oss-20b prompt=517 completion=54 reasoning=21 total=571
+2026-10-21 21:58:34 - model=openai/gpt-oss-20b prompt=479 completion=35 reasoning=15 total=514
+2026-10-21 21:59:12 - model=openai/gpt-oss-20b prompt=475 completion=32 reasoning=11 total=507

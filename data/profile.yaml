@@ -1,0 +1,19 @@
+# Personal details for filling forms. You fill this in yourself.
+# Read by the `get_profile_field` tool.
+
+full_name: ""
+first_name: ""
+last_name: ""
+email: ""
+phone: ""
+address: ""
+city: ""
+state: ""
+zip: ""
+country: ""
+dob: ""
+company: ""
+job_title: ""
+linkedin: ""
+github: ""
+website: ""

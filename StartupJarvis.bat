@@ -1,2 +1,11 @@
 @echo off
-start /b python "D:\JARVIS-MARK5\jarvis\launcher\clap_launcher.py"
+cd /d "%~dp0"
+echo ==============================================
+echo           Starting JARVIS-MARK5
+echo ==============================================
+python main.py
+if errorlevel 1 (
+    echo.
+    echo JARVIS exited with an error.
+    pause
+)
